@@ -1,14 +1,21 @@
 namespace :importer do
   desc 'Import Customers from CSV file inside ./data'
   task customer: :environment do
-    # data = CSV.read Rails.root.join("data", "customer.csv")
-    # User = ``
+    CSV.foreach(Rails.root.join("data", "customer.csv").to_s) do |row|
+      user = User.find_by_uuid(row[1]) || User.new.tap do |user|
+        user.name = ""
+        user.uuid = row[1].upcase
+        user.fake = true
+        user.email = "#{row[1]}@example.com"
+        user.password = user.password_confirmation = Devise.friendly_token[0..20]
+      end.save
+    end
   end
 
   desc 'Import Sensors from CSV file inside ./data'
   task sensors: :environment do
     CSV.foreach(Rails.root.join("data", "sensors.csv").to_s) do |row|
-      sensor = Sensor.find_or_initialize_by(uuid: row[2])
+      sensor = Sensor.find_or_initialize_by_uuid(row[2])
       sensor.update_attributes(user_id: row[1], format: row[3], length: row[4])
     end
   end

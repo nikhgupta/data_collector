@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, ActiveAdmin::Devise.config
+
+  devise_config = ActiveAdmin::Devise.config
+  devise_config[:controllers][:registrations] = "users/registrations"
+  devise_for :users, devise_config
   ActiveAdmin.routes(self)
+
+  get "charts" => "charts#index", as: :charts
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

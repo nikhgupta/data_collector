@@ -22,5 +22,16 @@ group :development, :test do
   gem 'pry-rails'
 end
 
+# gem 'bullet', group: :development
+
+gem 'pundit'
 gem 'devise'
 gem 'activeadmin', '~> 1.0.0.pre2'
+
+gem 'chartkick'
+gem 'groupdate'
+
+source 'https://rails-assets.org' do
+  # gem 'rails-assets-highcharts'
+  gem 'rails-assets-datetimepicker'
+end

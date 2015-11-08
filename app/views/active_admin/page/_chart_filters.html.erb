@@ -1,0 +1,27 @@
+<%= form_tag(:charts, method: :get, class: "formtastic charts", remote: true) do |f| %>
+  <fieldset class="inputs">
+    <legend><span>Chart Filters</span></legend>
+    <ol style="width: 45%; margin-right: 3%; float: right;">
+      <li>
+        <%= label_tag(:sensors, "Available Sensors") %>
+        <%= select_tag(:sensors, options_for_select(current_user.sensors.map{|s| [s.uuid, s.id]}), multiple: true) %>
+      </li>
+      <li>
+        <%= label_tag(:period_end, "Till") %>
+        <%= text_field(:period_end, "", class: "datetimepicker") %>
+      </li>
+    </ol>
+
+    <ol style="width: 45%; margin-left: 3%;">
+      <li>
+        <%= label_tag(:series, "Period Length") %>
+        <%= select_tag(:series, options_for_select(DataCollector::DURATIONS.map{|opt| ["Every #{opt.titleize}", opt]}), multiple: true) %>
+      </li>
+      <li>
+        <%= label_tag(:period_start, "From") %>
+        <%= text_field(:period_start, "", class: "datetimepicker") %>
+      </li>
+      <li> <%= submit_tag "Apply Filters" %> </li>
+    </ol>
+  </fieldset>
+<% end %>

@@ -1,3 +1,7 @@
+/*
+ *= require datetimepicker
+ */
+
 // SASS variable overrides must be declared before loading up Active Admin's styles.
 //
 // To view the variables that Active Admin provides, take a look at
@@ -18,4 +22,47 @@
 
 #footer {
   p { display: none; }
+}
+
+#sensor-charts {
+  min-height: 300px;
+  padding: 25px 10px 10px;
+  margin-bottom: 20px;
+  .chart {
+    text-align: center;
+    h3 { margin-top: 120px;}
+    .highcharts-container { margin: 0 auto; }
+  }
+  .message {
+    text-align: center;
+    font-weight: bold;
+    padding: 6px 10px;
+    width: 80%;
+    margin: 0 auto 20px;
+    height: 18px;
+    &.warning {
+      background: #ffe;
+      border: 1px solid #ff8;
+    }
+    &.error {
+      background: #fee;
+      border: 1px solid #f88;
+    }
+  }
+}
+
+form.formtastic {
+  .inputs {
+    select {
+      width: 80%;
+      border: 1px solid #c9d0d6;
+      border-radius: 2px;
+      font-size: 0.95em;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      outline: none;
+      option {
+        padding: 6px 10px 5px;
+      }
+    }
+  }
 }

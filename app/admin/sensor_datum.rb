@@ -1,17 +1,16 @@
 ActiveAdmin.register SensorDatum do
+  # actions :all, except: [:new, :edit, :create, :update]
+  index do
+    selectable_column
+    id_column
+    column :sensor
+    column(:data_time, sortable: :data_time){|sd| sd.data_time.strftime("%m/%d/%Y %H:%M")}
+    column :data_value
+    column(:created_at, sortable: :created_at){|sd| sd.created_at.strftime("%m/%d/%Y %H:%M")}
+  end
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if resource.something?
-#   permitted
-# end
-
-
+  filter :sensor
+  # filter :data_time, as: :string, input_html: { class: "datetimepicker" }
+  filter :data_value, as: :numeric
+  filter :created_at
 end
