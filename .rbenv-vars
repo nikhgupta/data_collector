@@ -1,0 +1,2 @@
+DEVISE_EMAIL_FROM=admin@localhost
+DEFAULT_PASSWORD=password
