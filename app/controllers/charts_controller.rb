@@ -48,10 +48,13 @@ class ChartsController < ApplicationController
     data = data.where(period_length: kind)
     data = data.where("period_start >= ?", from) if from.present?
     data = data.where("period_start <= ?", to)   if to.present?
-    data = data.group_by_minute(:period_start, format: "%B %d, %Y %H:%M:%S UTC")
-    data = data.average(:mean)
-    data = data.select{|k,v| v.to_i > 0}
-    { name: "#{kind}-aggregate".titleize, data: data }
+    data = data.pluck(:period_start, :total, :count).group_by(&:first)
+    data = data.map do |start, arr|
+      total = arr.map{|a| a[1].to_f}.sum
+      count = arr.map{|a| a[2].to_f}.sum
+      [start.strftime("%B %d, %Y %H:%M:%S UTC"), (total/count).round(2)]
+    end
+    { name: "#{kind}-aggregate".titleize, data: Hash[data] }
   end
 
   def requested_time_periods

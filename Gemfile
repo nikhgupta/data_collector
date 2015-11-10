@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.3'
 
 gem 'rails', '4.2.2'
 gem 'mysql2', '~> 0.3.18'
@@ -29,7 +30,7 @@ gem 'devise'
 gem 'activeadmin', '~> 1.0.0.pre2'
 
 gem 'chartkick'
-gem 'groupdate'
+# gem 'groupdate'
 
 source 'https://rails-assets.org' do
   # gem 'rails-assets-highcharts'
