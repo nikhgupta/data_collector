@@ -3,7 +3,7 @@ class Users::RegistrationsController < ActiveAdmin::Devise::RegistrationsControl
 
   def create
     super do |resource|
-      resource.update_attribute :fake, false
+      resource.update_attribute :fake, false if resource.valid?
     end
   end
 

@@ -38,6 +38,6 @@ class User < ActiveRecord::Base
   private
 
   def upcase_uuid
-    self.uuid = self.uuid.upcase
+    self.uuid = self.uuid.to_s.upcase
   end
 end

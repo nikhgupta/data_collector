@@ -25,6 +25,17 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'spring-commands-rspec'
+  gem 'poltergeist'
+end
+
+group :test do
+  gem 'launchy'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'simplecov', require: false
 end
 
 # gem 'bullet', group: :development

@@ -20,6 +20,7 @@ class ChartsController < ApplicationController
       @filters[:sensors] = requested_sensor_ids
     end
 
+    request.format = :js if request.xhr?
     respond_to do |format|
       format.js
       format.json { render json: { data: @data, filters: @filters }.to_json }
@@ -30,12 +31,7 @@ class ChartsController < ApplicationController
 
   def fetch_chart_data
     @data = requested_time_periods.map do |kind|
-      time_series_data_for_aggregate(
-        kind,
-        params[:period_start].try(:first),
-        params[:period_end].try(:first),
-        # zeroes: params[:add_zeroes].present?
-      )
+      time_series_data_for_aggregate(kind, params[:period_start], params[:period_end])
     end
   end
 
@@ -52,7 +48,8 @@ class ChartsController < ApplicationController
     data = data.map do |start, arr|
       total = arr.map{|a| a[1].to_f}.sum
       count = arr.map{|a| a[2].to_f}.sum
-      [start.strftime("%B %d, %Y %H:%M:%S UTC"), (total/count).round(2)]
+      start = (start - start.sec).strftime("%B %d, %Y %H:%M:%S UTC")
+      [start, (total/count).round(2)]
     end
     { name: "#{kind}-aggregate".titleize, data: Hash[data] }
   end

@@ -4,7 +4,7 @@ class CreateSensors < ActiveRecord::Migration
       t.references :user, index: true, foreign_key: true
       t.string :uuid
       t.string :format
-      t.string :length
+      t.integer :length
 
       t.timestamps null: false
     end

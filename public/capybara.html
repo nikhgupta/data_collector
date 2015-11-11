@@ -1,0 +1,71 @@
+<!DOCTYPE html><html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title>Dashboard | Data Collector</title>
+<link rel="stylesheet" media="screen" href="/assets/active_admin.css" /><link rel="stylesheet" media="print" href="/assets/active_admin/print.css" /><script src="/assets/active_admin.js"></script><script src="//code.highcharts.com/highcharts.js"></script><script src="/assets/chartkick.js"></script>  </head>
+  <body class="index dashboard active_admin logged_in root_namespace">
+    <div id="wrapper">
+      <div class="header" id="header">
+        <h1 class="site_title" id="site_title"><a href="/">Data Collector</a></h1>
+        <ul class="header-item tabs" id="tabs">
+          <li class="current" id="dashboard"><a href="/dashboard">Dashboard</a></li>
+          <li id="aggregates"><a href="/aggregates">Aggregates</a></li>
+          <li id="sensor_data"><a href="/sensor_data">Sensor Data</a></li>
+          <li id="sensors"><a href="/sensors">Sensors</a></li>
+        </ul>
+        <ul class="header-item tabs" id="utility_nav">
+          <li id="current_user"><a href="/users/2/edit">user9@example.com</a></li>
+          <li id="logout"><a data-method="get" href="/logout">Logout</a></li>
+        </ul>
+      </div>
+      <div class="title_bar" id="title_bar">
+        <div id="titlebar_left">
+          <h2 id="page_title">Dashboard</h2>
+        </div>
+        <div id="titlebar_right"></div>
+      </div>
+      <div class="flashes"></div>
+      <div id="active_admin_content" class="without_sidebar">
+        <div id="main_content_wrapper">
+          <div id="main_content">
+<form class="formtastic charts" action="/charts" accept-charset="UTF-8" data-remote="true" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+  <fieldset class="inputs">
+    <legend><span>Chart Filters</span></legend>
+    <ol style="width: 45%; margin-right: 3%; float: right;">
+      <li>
+        <label for="sensors">Available Sensors</label>
+        <select name="sensors[]" id="sensors" multiple="multiple"><option value="1">E0C4C200-E920-4E1E-9CBB-D00E6C401E52</option></select>
+      </li>
+      <li>
+        <label for="period_end">Till</label>
+        <input class="datetimepicker" type="text" name="period_end[]" id="period_end_" />
+      </li>
+    </ol>
+
+    <ol style="width: 45%; margin-left: 3%;">
+      <li>
+        <label for="series">Period Length</label>
+        <select name="series[]" id="series" multiple="multiple"><option value="minute">Every Minute</option>
+<option value="5-minute">Every 5 Minute</option>
+<option value="hour">Every Hour</option></select>
+      </li>
+      <li>
+        <label for="period_start">From</label>
+        <input class="datetimepicker" type="text" name="period_start[]" id="period_start_" />
+      </li>
+      <li> <input type="submit" name="commit" value="Apply Filters" /> </li>
+    </ol>
+  </fieldset>
+</form>            <div id="sensor-charts">
+              <div class="message"></div>
+              <div class="chart"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer" id="footer">
+        <p>Powered by <a href="http://www.activeadmin.info">Active Admin</a> 1.0.0.pre2</p>
+      </div>
+    </div>
+  </body>
+</html>

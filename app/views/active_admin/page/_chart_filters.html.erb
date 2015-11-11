@@ -8,7 +8,7 @@
       </li>
       <li>
         <%= label_tag(:period_end, "Till") %>
-        <%= text_field(:period_end, "", class: "datetimepicker") %>
+        <%= text_field_tag("period_end", "", class: "datetimepicker") %>
       </li>
     </ol>
 
@@ -19,7 +19,7 @@
       </li>
       <li>
         <%= label_tag(:period_start, "From") %>
-        <%= text_field(:period_start, "", class: "datetimepicker") %>
+        <%= text_field_tag(:period_start, "", class: "datetimepicker") %>
       </li>
       <li> <%= submit_tag "Apply Filters" %> </li>
     </ol>

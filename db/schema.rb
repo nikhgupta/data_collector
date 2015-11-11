@@ -30,15 +30,15 @@ ActiveRecord::Schema.define(version: 20151108191539) do
 
   create_table "aggregates", force: :cascade do |t|
     t.integer  "sensor_id",     limit: 4
-    t.time     "period_start"
-    t.time     "period_end"
+    t.datetime "period_start"
+    t.datetime "period_end"
     t.string   "period_length", limit: 255
-    t.string   "total",         limit: 255
-    t.string   "count",         limit: 255
-    t.string   "mean",          limit: 255
-    t.string   "std_dev",       limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.decimal  "total",                     precision: 10, scale: 3
+    t.decimal  "count",                     precision: 10, scale: 3
+    t.decimal  "mean",                      precision: 10, scale: 3
+    t.decimal  "std_dev",                   precision: 10, scale: 3
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
   end
 
   add_index "aggregates", ["sensor_id"], name: "index_aggregates_on_sensor_id", using: :btree
@@ -46,9 +46,9 @@ ActiveRecord::Schema.define(version: 20151108191539) do
   create_table "sensor_data", force: :cascade do |t|
     t.integer  "sensor_id",  limit: 4
     t.time     "data_time"
-    t.string   "data_value", limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.decimal  "data_value",           precision: 10, scale: 3
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
   end
 
   add_index "sensor_data", ["sensor_id"], name: "index_sensor_data_on_sensor_id", using: :btree
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20151108191539) do
     t.integer  "user_id",    limit: 4
     t.string   "uuid",       limit: 255
     t.string   "format",     limit: 255
-    t.string   "length",     limit: 255
+    t.integer  "length",     limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(version: 20151108191539) do
   add_index "sensors", ["user_id"], name: "index_sensors_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                   limit: 255, default: "",    null: false
-    t.string   "uuid",                   limit: 255
+    t.string   "name",                   limit: 255, default: ""
+    t.string   "uuid",                   limit: 255,                 null: false
     t.boolean  "admin",                  limit: 1,   default: false
     t.boolean  "fake",                   limit: 1,   default: false
     t.string   "email",                  limit: 255, default: "",    null: false

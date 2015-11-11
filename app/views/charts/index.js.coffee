@@ -2,8 +2,8 @@ el = $('#sensor-charts .chart')
 <% if @filters[:series].present? %>
 html = '<%= j line_chart(@data, library: { chart: { width: 1200 } }, min: nil, max: nil) %>'
 
-$("#period_start_").val '<%= @filters[:period_start] %>' if $("#period_start_").val() is ""
-$("#period_end_").val '<%= @filters[:period_end] %>' if $("#period_end_").val() is ""
+$("#period_start").val '<%= @filters[:period_start] %>' if $("#period_start").val() is ""
+$("#period_end").val '<%= @filters[:period_end] %>' if $("#period_end").val() is ""
 
 <% @filters[:series].each do |series| %>
 $("#series option[value='<%= series %>']").attr("selected", "selected")
