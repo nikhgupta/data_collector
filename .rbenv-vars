@@ -1,4 +1,0 @@
-DEVISE_EMAIL_FROM=admin@localhost
-DEFAULT_PASSWORD=password
-TIMEZONE=Europe/London
-BASE_URL=localhost:44444

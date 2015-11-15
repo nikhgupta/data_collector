@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 ruby '2.2.3'
 
 gem 'rails', '4.2.2'
-gem 'mysql2', '~> 0.3.18'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -28,6 +27,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
   gem 'poltergeist'
+  gem 'mysql2', '~> 0.3.18'
 end
 
 group :test do
