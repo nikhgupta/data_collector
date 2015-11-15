@@ -8,7 +8,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    scope.where(id: record.id).exists?
   end
 
   def destroy?

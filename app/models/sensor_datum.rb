@@ -3,6 +3,6 @@ class SensorDatum < ActiveRecord::Base
   delegate :user, to: :sensor
 
   def to_s
-    "#{sensor}: #{data_time}"
+    "#{sensor}: #{data_time.utc.strftime "%B %d, %Y %H:%M"}"
   end
 end

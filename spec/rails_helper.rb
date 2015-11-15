@@ -4,7 +4,10 @@ ENV['RAILS_ENV'] ||= 'test'
 # simplecov test coverage
 unless ENV['COVERAGE'].to_s.strip.empty?
   require 'simplecov'
-  SimpleCov.start 'rails'
+  SimpleCov.start 'rails' do
+    add_group "Admin", "/app/admin"
+    add_group "Policies", "/app/policies"
+  end
   puts "required simplecov..."
 end
 

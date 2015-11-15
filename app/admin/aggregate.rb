@@ -1,5 +1,6 @@
 ActiveAdmin.register Aggregate do
   includes :sensor
+  actions :all, except: [:new, :show, :create, :edit, :update, :destroy]
 
   index do
     id_column
@@ -13,7 +14,7 @@ ActiveAdmin.register Aggregate do
     column(:created_at, sortable: :created_at){|ag| ag.created_at.strftime("%m/%d/%Y %H:%M")}
   end
 
-  filter :sensor
+  filter :sensor, collection: -> { current_user.sensors }
   filter :period_length, as: :select, collection: DataCollector::DURATIONS.map{|d| ["Per #{d.titleize} Aggregates", d]}
   filter :period_start, input_html: { class: "datetimepicker" }
   filter :period_end, input_html: { class: "datetimepicker" }

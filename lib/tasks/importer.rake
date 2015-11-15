@@ -15,7 +15,7 @@ namespace :importer do
   desc 'Import Sensors from CSV file inside ./data'
   task sensors: :environment do
     CSV.foreach(Rails.root.join("data", "sensors.csv").to_s) do |row|
-      sensor = Sensor.find_or_initialize_by_uuid(row[2])
+      sensor = Sensor.find_or_initialize_by(uuid: row[2].try(:upcase))
       sensor.update_attributes(user_id: row[1], format: row[3], length: row[4])
     end
   end

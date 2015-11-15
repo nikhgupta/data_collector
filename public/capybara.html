@@ -1,65 +1,102 @@
 <!DOCTYPE html><html>
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-    <title>Dashboard | Data Collector</title>
+    <title>Aggregates | Data Collector</title>
 <link rel="stylesheet" media="screen" href="/assets/active_admin.css" /><link rel="stylesheet" media="print" href="/assets/active_admin/print.css" /><script src="/assets/active_admin.js"></script><script src="//code.highcharts.com/highcharts.js"></script><script src="/assets/chartkick.js"></script>  </head>
-  <body class="index dashboard active_admin logged_in root_namespace">
+  <body class="index aggregates active_admin logged_in root_namespace">
     <div id="wrapper">
       <div class="header" id="header">
         <h1 class="site_title" id="site_title"><a href="/">Data Collector</a></h1>
         <ul class="header-item tabs" id="tabs">
-          <li class="current" id="dashboard"><a href="/dashboard">Dashboard</a></li>
-          <li id="aggregates"><a href="/aggregates">Aggregates</a></li>
+          <li id="dashboard"><a href="/dashboard">Dashboard</a></li>
+          <li class="current" id="aggregates"><a href="/aggregates">Aggregates</a></li>
           <li id="sensor_data"><a href="/sensor_data">Sensor Data</a></li>
           <li id="sensors"><a href="/sensors">Sensors</a></li>
         </ul>
         <ul class="header-item tabs" id="utility_nav">
-          <li id="current_user"><a href="/users/2/edit">user9@example.com</a></li>
+          <li id="current_user"><a href="/users/1/edit">Test User</a></li>
           <li id="logout"><a data-method="get" href="/logout">Logout</a></li>
         </ul>
       </div>
       <div class="title_bar" id="title_bar">
         <div id="titlebar_left">
-          <h2 id="page_title">Dashboard</h2>
+          <h2 id="page_title">Aggregates</h2>
         </div>
-        <div id="titlebar_right"></div>
+        <div id="titlebar_right">
+          <div class="action_items">
+            <span class="action_item"></span>
+          </div>
+        </div>
       </div>
       <div class="flashes"></div>
-      <div id="active_admin_content" class="without_sidebar">
+      <div id="active_admin_content" class="with_sidebar">
         <div id="main_content_wrapper">
           <div id="main_content">
-<form class="formtastic charts" action="/charts" accept-charset="UTF-8" data-remote="true" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
-  <fieldset class="inputs">
-    <legend><span>Chart Filters</span></legend>
-    <ol style="width: 45%; margin-right: 3%; float: right;">
-      <li>
-        <label for="sensors">Available Sensors</label>
-        <select name="sensors[]" id="sensors" multiple="multiple"><option value="1">E0C4C200-E920-4E1E-9CBB-D00E6C401E52</option></select>
-      </li>
-      <li>
-        <label for="period_end">Till</label>
-        <input class="datetimepicker" type="text" name="period_end[]" id="period_end_" />
-      </li>
-    </ol>
-
-    <ol style="width: 45%; margin-left: 3%;">
-      <li>
-        <label for="series">Period Length</label>
-        <select name="series[]" id="series" multiple="multiple"><option value="minute">Every Minute</option>
-<option value="5-minute">Every 5 Minute</option>
-<option value="hour">Every Hour</option></select>
-      </li>
-      <li>
-        <label for="period_start">From</label>
-        <input class="datetimepicker" type="text" name="period_start[]" id="period_start_" />
-      </li>
-      <li> <input type="submit" name="commit" value="Apply Filters" /> </li>
-    </ol>
-  </fieldset>
-</form>            <div id="sensor-charts">
-              <div class="message"></div>
-              <div class="chart"></div>
+            <div class="paginated_collection">
+              <div class="paginated_collection_contents">
+                <div class="index_content">
+                  <div class="index_as_table">
+                    <table border="0" cellspacing="0" cellpadding="0" id="index_table_aggregates" class="index_table index" paginator="true">
+                      <thead>
+                        <tr>
+                          <th class="sortable sorted-desc col col-id"><a href="/aggregates?order=id_asc">Id</a></th>
+                          <th class="sortable col col-sensor"><a href="/aggregates?order=sensor_id_desc">Sensor</a></th>
+                          <th class="sortable col col-length"><a href="/aggregates?order=period_length_desc">Length</a></th>
+                          <th class="sortable col col-start"><a href="/aggregates?order=period_start_desc">Start</a></th>
+                          <th class="sortable col col-end"><a href="/aggregates?order=period_end_desc">End</a></th>
+                          <th class="sortable col col-total"><a href="/aggregates?order=total_desc">Total</a></th>
+                          <th class="sortable col col-mean"><a href="/aggregates?order=mean_desc">Mean</a></th>
+                          <th class="sortable col col-std_dev"><a href="/aggregates?order=std_dev_desc">Std Dev</a></th>
+                          <th class="sortable col col-created_at"><a href="/aggregates?order=created_at_desc">Created At</a></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="odd" id="aggregate_1">
+                          <td class="col col-id"><a class="resource_id_link" href="/aggregates/1">1</a></td>
+                          <td class="col col-sensor">Sensor ABCDEFGH</td>
+                          <td class="col col-length">Minute</td>
+                          <td class="col col-start">11/15/2015 06:03</td>
+                          <td class="col col-end">11/15/2015 06:04</td>
+                          <td class="col col-total">22.0</td>
+                          <td class="col col-mean">4.4</td>
+                          <td class="col col-std_dev">0.824</td>
+                          <td class="col col-created_at">11/15/2015 07:03</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div id="index_footer">
+                <div class="pagination_information">Displaying <b>1</b> Aggregate</div>
+                <div class="download_links">
+                  <span>Download:</span>
+                  <a href="/aggregates.csv">CSV</a>
+                  <a href="/aggregates.xml">XML</a>
+                  <a href="/aggregates.json">JSON</a>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+        <div id="sidebar">
+          <div class="sidebar_section panel" id="filters_sidebar_section">
+            <h3>Filters</h3>
+            <div class="panel_contents"><form class="filter_form" id="new_q" action="/aggregates" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" /><div class="filter_form_field filter_select"><label for="q_sensor_id" class="label">Sensor</label><select name="q[sensor_id_eq]" id="q_sensor_id"><option value="">Any</option>
+<option value="1">Sensor ABCDEFGH</option>
+<option value="2">Sensor STUVWXYZ</option></select></div><div class="filter_form_field filter_select"><label for="q_period_length" class="label">Period length</label><select name="q[period_length_eq]" id="q_period_length"><option value="">Any</option>
+<option value="minute">Per Minute Aggregates</option>
+<option value="5-minute">Per 5 Minute Aggregates</option>
+<option value="hour">Per Hour Aggregates</option></select></div><div class="filter_form_field filter_string"><label for="q_period_start" class="label">Period start</label><input id="q_period_start" class="datetimepicker" type="text" name="q[period_start]" /></div><div class="filter_form_field filter_string"><label for="q_period_end" class="label">Period end</label><input id="q_period_end" class="datetimepicker" type="text" name="q[period_end]" /></div><div class="filter_form_field filter_numeric select_and_search"><label for="q_total" class="label">Total</label><select name="" id=""><option selected="selected" value="total_equals">Equals</option>
+<option value="total_greater_than">Greater than</option>
+<option value="total_less_than">Less than</option></select><input id="q_total" step="any" type="text" name="q[total_equals]" /></div><div class="filter_form_field filter_numeric select_and_search"><label for="q_mean" class="label">Mean</label><select name="" id=""><option selected="selected" value="mean_equals">Equals</option>
+<option value="mean_greater_than">Greater than</option>
+<option value="mean_less_than">Less than</option></select><input id="q_mean" step="any" type="text" name="q[mean_equals]" /></div><div class="filter_form_field filter_numeric select_and_search"><label for="q_std_dev" class="label">Std dev</label><select name="" id=""><option selected="selected" value="std_dev_equals">Equals</option>
+<option value="std_dev_greater_than">Greater than</option>
+<option value="std_dev_less_than">Less than</option></select><input id="q_std_dev" step="any" type="text" name="q[std_dev_equals]" /></div><div class="filter_form_field filter_date_range"><label class="label">Created at</label>
+<input size="12" class="datepicker" maxlength="10" value="" type="text" name="q[created_at_gteq]" id="q_created_at_gteq" />
+<span class="seperator">-</span>
+<input size="12" class="datepicker" maxlength="10" value="" type="text" name="q[created_at_lteq]" id="q_created_at_lteq" /></div><div class="buttons"><input type="submit" name="commit" value="Filter" /><a class="clear_filters_btn" href="#">Clear Filters</a><input type="hidden" name="order" id="hidden_active_admin_order" value="id_desc" /></div></form></div>
           </div>
         </div>
       </div>
